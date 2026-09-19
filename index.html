@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EraCloud — Minecraft Hosting</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080b0f;
+    color: white;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    background: rgba(8,11,15,.95);
+    border-bottom: 1px solid #20262d;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #35e65b;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    color: #bbb;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #35e65b;
+}
+
+.auth {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.login {
+    background: #171c22;
+    color: white;
+    border: 1px solid #303840;
+}
+
+.register,
+.create {
+    background: #22c94d;
+    color: #071009;
+}
+
+.hero {
+    min-height: 590px;
+    padding: 110px 7%;
+    display: flex;
+    align-items: center;
+    background:
+      linear-gradient(90deg, #080b0fee, #080b0f99, #080b0f55),
+      url("https://images.unsplash.com/photo-1607513746994-51f730a8db1d?auto=format&fit=crop&w=1800&q=80");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: #12351c;
+    color: #43ed68;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 58px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+h1 span {
+    color: #35e65b;
+}
+
+.hero p {
+    color: #c1c6ca;
+    font-size: 19px;
+    line-height: 1.6;
+    max-width: 620px;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.features {
+    padding: 75px 7%;
+    background: #0c1015;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.title h2 {
+    font-size: 35px;
+}
+
+.title p {
+    color: #929aa2;
+    margin-top: 10px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: #12171d;
+    border: 1px solid #252c33;
+    border-radius: 14px;
+    padding: 30px;
+    transition: .2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #35e65b;
+}
+
+.icon {
+    font-size: 38px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #929aa2;
+    line-height: 1.6;
+}
+
+.hosting {
+    padding: 80px 7%;
+}
+
+.host-box {
+    max-width: 1100px;
+    margin: auto;
+    background: linear-gradient(135deg,#111820,#0d1217);
+    border: 1px solid #273039;
+    border-radius: 18px;
+    padding: 40px;
+}
+
+.server {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px;
+    margin-top: 25px;
+    background: #171d24;
+    border-radius: 12px;
+}
+
+.status {
+    color: #39e85e;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    background: #0c1015;
+    border-top: 1px solid #20262d;
+    border-bottom: 1px solid #20262d;
+}
+
+.stat {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.stat strong {
+    font-size: 28px;
+    color: #35e65b;
+    display: block;
+}
+
+.stat span {
+    color: #8d969e;
+}
+
+footer {
+    padding: 35px 7%;
+    background: #07090c;
+    color: #737b83;
+    text-align: center;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media(max-width:800px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .auth .login {
+        display: none;
+    }
+
+    .hero {
+        padding: 80px 5%;
+        min-height: 620px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .server {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .hosting,
+    .features {
+        padding: 60px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">Era<span>Cloud</span></div>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#features">Возможности</a>
+        <a href="#hosting">Хостинг</a>
+        <a href="#support">Поддержка</a>
+    </nav>
+
+    <div class="auth">
+        <a class="btn login" href="#" onclick="login()">Войти</a>
+        <a class="btn register" href="#" onclick="register()">Регистрация</a>
+    </div>
+
+</header>
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">⚡ Minecraft Hosting</div>
+
+        <h1>
+            Создай свой<br>
+            <span>Minecraft сервер</span>
+        </h1>
+
+        <p>
+            EraCloud — удобный хостинг для Minecraft.
+            Создавай серверы, управляй ими и играй
+            вместе с друзьями.
+        </p>
+
+        <div class="buttons">
+            <a class="btn create" href="#" onclick="createServer()">
+                🚀 Создать сервер
+            </a>
+
+            <a class="btn login" href="#features">
+                Узнать больше
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="stats">
+
+    <div class="stat">
+        <strong>1000+</strong>
+        <span>Игроков</span>
+    </div>
+
+    <div class="stat">
+        <strong>500+</strong>
+        <span>Серверов</span>
+    </div>
+
+    <div class="stat">
+        <strong>99.9%</strong>
+        <span>Стабильность</span>
+    </div>
+
+    <div class="stat">
+        <strong>24/7</strong>
+        <span>Поддержка</span>
+    </div>
+
+</section>
+
+<section class="features" id="features">
+
+    <div class="title">
+        <h2>Почему EraCloud?</h2>
+        <p>Всё необходимое для твоего Minecraft-сервера</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Быстрый запуск</h3>
+            <p>
+                Создай сервер всего за несколько секунд
+                и сразу начинай играть.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🛡️</div>
+            <h3>Защита</h3>
+            <p>
+                Твои серверы защищены и изолированы
+                от других пользователей.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎮</div>
+            <h3>Java + Bedrock</h3>
+            <p>
+                Возможность играть вместе на Java
+                и Bedrock при соответствующей настройке.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📁</div>
+            <h3>Файлы сервера</h3>
+            <p>
+                Управляй файлами, конфигурациями,
+                мирами и плагинами.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔌</div>
+            <h3>Плагины</h3>
+            <p>
+                Устанавливай и настраивай плагины
+                для своего сервера.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💾</div>
+            <h3>Бэкапы</h3>
+            <p>
+                Сохраняй резервные копии своего
+                Minecraft-сервера.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="hosting" id="hosting">
+
+    <div class="host-box">
+
+        <div class="title">
+            <h2>Твой сервер</h2>
+            <p>Управляй сервером прямо из панели EraCloud</p>
+        </div>
+
+        <div class="server">
+
+            <div>
+                <h3>🌳 EraSMP</h3>
+                <p class="status">● Сервер онлайн</p>
+            </div>
+
+            <div>
+                <p>IP: <b>play.eracloud.ru</b></p>
+                <p>Версия: 1.21.x</p>
+            </div>
+
+            <a class="btn create" href="#" onclick="createServer()">
+                Управлять
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features" id="support">
+
+    <div class="title">
+        <h2>Готов начать?</h2>
+        <p>Создай свой Minecraft-сервер в EraCloud</p>
+
+        <div class="buttons" style="justify-content:center">
+            <a class="btn create" href="#" onclick="createServer()">
+                🚀 Создать сервер
+            </a>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 EraCloud — Minecraft Hosting
+</footer>
+
+<script>
+
+function createServer() {
+    alert("Регистрация необходима для создания сервера!");
+}
+
+function login() {
+    alert("Страница входа будет доступна после подключения системы аккаунтов.");
+}
+
+function register() {
+    alert("Страница регистрации будет доступна после подключения базы данных.");
+}
+
+</script>
+
+</body>
+</html>
